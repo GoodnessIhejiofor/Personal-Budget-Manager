@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css'; // Ensure this file exists and has styles
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import App from './App.tsx'
+import Home from './components/Home.tsx'
+import './index.css'
 
-const rootElement = document.getElementById('root') as HTMLElement;
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/budget" element={<App />} />
+      </Routes>
+    </Router>
+  </StrictMode>,
+)
